@@ -1,0 +1,200 @@
+/* Estilo Geral */
+body {
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    height: 90%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do Banner */
+.banner {
+    flex: 1;
+    background-color: #0054A6;
+    color: white;
+    padding: 50px;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative; /* Necessário para o posicionamento absoluto da imagem */
+}
+
+.background-logo {
+    position: absolute;
+    right: -180px; /* Alinha a imagem à direita */
+    top: 100; /* Ajusta a posição para o topo */
+    width: 180%; /* Ajuste para cobrir quase todo o fundo azul */
+    opacity: 0.15; /* Aumenta a visibilidade da imagem */
+    z-index: 0; /* Mantém a imagem atrás do texto */
+}
+
+
+.wel_text, .para {
+    position: relative;
+    z-index: 1; /* Coloca o texto acima da imagem */
+}
+
+
+
+.wel_text {
+    font-size: 40px;
+    margin-bottom: -20px;
+}
+
+.para {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* Estilo do Formulário */
+.form-container {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Centraliza o texto */
+    width: 80%;
+    max-width: 350px;
+}
+
+.logo {
+    width: 200px;  /* Aumentar Tamanho */
+    margin-bottom: -20px;
+}
+
+.title {
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 5px; /* Reduz a margem inferior para aproximar do subtítulo */
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 0px; /* Reduz a margem superior para ficar mais próximo do título */
+    margin-bottom: 15px; /* Espaçamento entre subtítulo e os campos de entrada */
+}
+
+
+.inp {
+    width: 85%;
+    position: relative;
+    margin-bottom: 8px; /* Reduzindo a margem para aproximar os campos */
+    position: center;
+}
+
+.input {
+    width: 100%; /* Ocupa 100% da largura do container */
+    padding: 10px; /* Ajuste do preenchimento para manter o mesmo padding */
+    border: 1px solid #ccc; /* Borda semelhante ao modelo apresentado */
+    border-radius: 5px; /* Arredondamento igual ao das outras entradas */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    font-size: 14px;
+    outline: none; /* Remove o contorno azul ao focar no campo */
+    background-color: #ffffff; /* Cor de fundo */
+    transition: border-color 0.3s ease; /* Animação suave ao alterar a borda */
+    margin-left: 20px;
+}
+
+.inp i {
+    position: absolute;
+    left: 5px; /* Aproximando o ícone para alinhar com o texto */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0054A6;
+}
+
+.submit {
+    width: 85%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    background-color: #0054A6;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+.submit:hover {
+    background-color: #003974;
+}
+
+.footer {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilo Geral das Notificações */
+#success-notification, #error-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #0054A6; /* Azul para sucesso */
+    color: #FFFFFF;
+    border: 1px solid #0054A6;
+    padding: 20px 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-20px);
+    z-index: 1000;
+}
+
+#success-notification.visible, #error-notification.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo Diferenciado para Erro */
+#error-notification {
+    top: 80px; /* Posição diferente para não sobrepor sucesso */
+    background-color: #CCC;
+    color: #000;
+    border: 1px solid #999;
+}
+
+/* Estilo dos Ícones */
+.notification-icon {
+    width: 35px;
+    height: 35px;
+    object-fit: contain; /* Garante que o ícone seja exibido corretamente */
+}

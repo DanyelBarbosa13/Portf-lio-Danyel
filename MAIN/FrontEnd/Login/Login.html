@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/icon"href="../Assets/logo_branca-removebg-preview">
+    <title>LOGIN WEB</title>
+    <link rel="stylesheet" href="../Login/login.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Seção do Banner -->
+        <div class="banner">
+            <img src="../Assets/HelpSystem.WhithePNG.png" class="background-logo">
+            <h1 class="wel_text">HELP SYSTEM</h1>
+            <p class="para">Bem-vindo ao Help System</p>
+        </div>
+        <!-- Seção do Formulário -->
+        <div class="form-container">
+            <form action="" class="form">
+                <img src="../Assets/logo_azul.png" alt="LOGO" class="logo">
+                <h2 class="title">Fazer Login</h2>
+                <p class="subtitle">COLÉGIO NOSSA SENHORA DE LOURDES</p>
+                <div class="inp">
+                    <div class="inp" style="position: relative;">
+                        <input type="text" name="usuario" id="usuario" class="input" placeholder="Usuário">
+                        <i class="fa-solid fa-envelope" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #ccc;"></i>
+                    </div>
+                    <div class="inp" style="position: relative;">
+                        <input type="password" name="senha" id="senha" class="input" placeholder="Senha">
+                        <i class="fa-solid fa-eye" onclick="toggleSenha()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc;"></i>
+                    </div>                    
+                <button id="login-btn" class="submit">Login</button>
+                <p class="footer">Não tem conta? <a href="../Login/loginCadastro.html" class="register-link" onclick="redirecionarCadastro()">Cadastre-se</a></p>
+            </form>
+        </div>
+    </div>
+
+<!-- Notificações -->
+<div id="success-notification">
+    <img src="../Assets/IconeNotifi.png" alt="Ícone de Sucesso" class="notification-icon">
+    <span>Login realizado com sucesso!</span>
+</div>
+<div id="error-notification">
+    <img src="../Assets/IconError.png" alt="Ícone de Erro" class="notification-icon">
+    <span>Erro ao realizar login. Verifique suas credenciais.</span>
+</div>
+
+    <script src="../Login/Login.js"></script>
+</body>
+</html>

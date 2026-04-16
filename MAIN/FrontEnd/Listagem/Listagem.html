@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/icon"href="../Assets/logo_branca-removebg-preview">
+    <link rel="stylesheet" href="../Listagem/Listagem.css">
+    <title>Listagem de Serviços</title>
+</head>
+<body>
+    <div class="menu">
+        <a href="../Home/Home.html">PÁGINA INICIAL</a>
+        <a href="../Sobre/sobre.html">SOBRE</a>
+        <a href="../Cadastro/Cadastro.html">CADASTRAR</a>
+        <a href="../Listagem/Listagem.html">LISTAR</a>
+        <img src="../Assets/logo_branca-removebg-preview.png" alt="Logo">
+        <b>HELP SYSTEM</b>
+    </div>
+      <!-- Área de usuário -->
+      <div class="user-area">
+        <img id="user-icon" src="../Assets/IconUser.png" alt="Ícone do usuário" width="40" height="40">
+        <span id="user-name"> Nome do Usuário</span>
+        <ul class="user-options">
+            <li><a href="#">Trocar Usuário</a></li>
+            <li><a href="../Login/Login.html" id="logout-btn">Logout</a></li>
+        </ul>
+    </div>
+</div>
+    
+    <div class="cabecalho-listagem">
+        <div class="textos-cabecalho-listagem">
+            <h3>Gerenciamento de Serviços</h3>
+            <h1>Listagem de Serviços</h1> 
+            <h4>Gerenciamento de Serviços: Detalhes de Tarefas - Tipo de Serviço, Máquina, Data, Responsável, Urgência e Status</h4>
+        </div>
+    </div>
+
+    <div class="listagem-servicos">
+        <div class="filter-box">
+            <select id="filtrar">
+                <option value="">FILTRAR</option>
+                <option value="mostrarTipoServico">Tipo de serviço</option>
+                <option value="mostrarUrgencia">Urgência</option>
+                <option value="mostrarResponsavel">Responsável</option>
+                <option value="mostrarPeriodo">Data</option>
+                <option value="mostrarConcluido">Conclusão</option>
+            </select>
+        
+            <select id="tipo-servico" style="display: none;">
+                <option value="">Selecione o tipo de Serviço:</option>
+                <option value="Limpeza">Limpeza</option>
+                <option value="Substituição">Substituição</option>
+                <option value="Reparo">Reparo</option>
+            </select>
+        
+            <select id="urgencia" style="display: none;">
+                <option value="">Selecione a Urgência:</option>
+                <option value="Pouco Urgente">Pouco Urgente</option>
+                <option value="Urgente">Urgente</option>
+                <option value="Muito Urgente">Muito Urgente</option>
+                <option value="Emergência">Emergência</option>
+            </select>
+        
+            <select id="responsavel" style="display: none;">
+                <option value="">Escolha uma Responsável</option>
+                <option value="THIÊNIO RENAN">THIÊNIO RENAN</option>
+                <option value="DANYEL BARBOSA">DANYEL BARBOSA</option>
+                <option value="LUIZ OTÁVIO">LUIZ OTÁVIO</option>
+            </select>
+        
+            <select id="periodo" style="display: none;">
+                <option value="">Selecione a Data</option>
+                <option value="7_dias">Últimos 7 dias</option>
+                <option value="30_dias">Últimos 30 dias</option>
+                <option value="3_meses">Últimos 3 meses</option>
+                <option value="6_meses">Últimos 6 meses</option>
+                <option value="12_meses">Últimos 12 meses</option>
+            </select>
+        
+            <select id="concluido" style="display: none;">
+                <option value="">Selecione a conclusão:</option>
+                <option value="Concluída">Concluída</option>
+                <option value="Não concluída">Não concluída</option>
+            </select> 
+        
+            <button id="filtrar-btn">Aplicar Filtros</button>
+            <button id="limpar-filtros-btn">Limpar Filtros</button> <!-- Novo botão -->
+        </div>
+        
+    
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nº</td>
+                        <td>Máquina</td>
+                        <td>Tipo Serviço</td>
+                        <td>Urgência</td>
+                        <td>Responsável</td>
+                        <td>Data</td>
+                        <td>Concluído</td>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-servicos">
+                    <!-- Os serviços serão adicionados aqui pelo JavaScript -->
+                </tbody>
+            </table>
+        </div>    
+
+        <div id="overlay-editar" class="overlay" style="display: none;">
+            <div id="modal-editar" class="modal-editar">
+                <h2>EDITAR CADASTRO</h2>
+               
+         <form class="form-servico">
+            <!-- Campo Tipo de Serviço separado -->
+            <div class="form-group">
+                <label for="tipo-servico1">Tipo de Serviço: *</label>
+                <select id="tipo-servico1">
+                    <option value="">Tipo de Serviço</option>
+                    <option value="Substituição">Substituição</option>
+                    <option value="Limpeza">Limpeza</option>
+                    <option value="Reparo">Reparo</option>
+                </select>
+            </div>
+        
+        
+            <!-- Primeira Coluna -->
+            <div class="form-group">
+                <label for="urgencia-servico">Urgência: *</label>
+                <select id="urgencia-servico">
+                    <option value="">Urgência</option>
+                    <option value="Pouco Urgente">Pouco Urgente</option>
+                    <option value="Urgente">Urgente</option>
+                    <option value="Muito Urgente">Muito Urgente</option>
+                    <option value="Emergência">Emergência</option>
+                </select>
+            </div>
+        
+        
+            <!-- Segunda Coluna -->
+            <div class="form-group">
+                <label for="responsavel-servico">Responsável: *</label>
+                <select id="responsavel-servico">
+                    <option value="">Escolha uma Responsável</option>
+                    <option value="THIÊNIO RENAN">THIÊNIO RENAN</option>
+                    <option value="DANYEL BARBOSA">DANYEL BARBOSA</option>
+                    <option value="LUIZ OTÁVIO">LUIZ OTÁVIO</option>
+                </select>
+            </div>
+        
+        
+            <div class="form-group">
+                <label for="data_servico">Data: *</label>
+                <input type="date" id="data_servico">
+            </div>
+        
+        
+            <!-- Linha Completa -->
+            <div class="form-group">
+                <label for="fk-locall-id">Local: *</label>
+                <select id="fk-locall-id">
+                    <option value="">Escolha um Local</option>
+                    <option value="Laboratório-01">Laboratório-01</option>
+                    <option value="Laboratório-02">Laboratório-02</option>
+                    <option value="Laboratório-03">Laboratório-03</option>
+                </select>
+            </div>
+        
+        
+            <div class="form-group">
+                <label for="maquina-servico">Máquina: *</label>
+                <select id="maquina-servico">
+                    <option value="">Escolha uma máquina</option>
+                    <option value="LABEFF-01">LABEFF-01</option>
+                    <option value="LABEFF-02">LABEFF-02</option>
+                    <option value="LABEFF-03">LABEFF-03</option>
+                </select>
+            </div>
+        
+        
+            <div class="form-group" style="grid-column: span 2;">
+                <label for="descricao">Descrição: *</label>
+                <textarea id="descricao" name="descricao" placeholder="Descreva com detalhes o problema.."></textarea>
+            </div>
+        
+        
+                    <!-- Botões -->
+                    <div class="form-buttons">
+                        <button type="button" onclick="fecharModalEditar()">Cancelar</button>
+                        <button type="button" onclick="atualizarServico()">Salvar</button>
+                    </div>
+            </div>        
+        </div>
+        
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="modal-confirmacao" style="display: none;">
+        <div class="modal-conteudo">
+            <h2>Confirmação</h2>
+            <p>Você tem certeza que deseja excluir este registro?</p>
+            <button id="botao-nao">Cancelar</button>
+            <button id="botao-sim">Confirmar</button>
+        </div>
+    </div>
+
+           <!-- Notificação de Sucesso -->
+<div class="notification" id="success-notification">
+    <img src="../Assets/IconeNotifi.png" alt="Ícone de Sucesso">
+    <span id="success-message">Mensagem de sucesso!</span>
+    <button class="close-btn" onclick="hideSuccessNotification()">×</button>
+</div>
+
+<!-- Notificação de Erro -->
+<div class="notification error" id="error-notification">
+    <img src="../Assets/IconError.png" alt="Ícone de Erro">
+    <span id="error-message">Mensagem de erro!</span>
+    <button class="close-btn" onclick="hideErrorNotification()">×</button>
+</div>
+
+    <div class="footer">
+        <div class="footer-section">
+            <h4>Sobre</h4>
+            <p>Um projeto dos Alunos do Colégio Nossa Senhora de Lourdes - Recife.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Mapa do Site</h4>
+            <ul>
+                <li><a href="../Home/Home.html">PÁGINA INICIAL</a></li>
+                <li><a href="../Sobre/sobre.html">SOBRE</a></li>
+                <li><a href="../Cadastro/Cadastro.html">CADASTRAR</a></li>
+                <li><a href="../Listagem/Listagem.html">LISTAR</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Informações de Contato</h4>
+            <p>R. Nossa Sra. de Lourdes, 139 - Casa Forte, Recife - PE, 52061-030<br>(81) 3182-3600</p>
+        </div>
+    </div>
+    <!-- Modal para Feedback da Lupa -->
+    <div id="feedbackModal" class="modal" style="display:none;">
+        <div class="feedback-detalhes">
+            <div class="modal-header">
+                <span onclick="fecharFeedback()" style="cursor: pointer; font-size: 20px; color: gray; position: absolute; top: 10px; right: 10px;">&times;</span>
+                <h3>Detalhes do Serviço</h3>
+            </div>
+            <h1>Informações do Serviço</h1>
+            <h4>Explore os Detalhes deste Serviço</h4>
+            <div class="detalhes-servico">
+                <!-- A descrição da resolução será inserida aqui via JavaScript -->
+            </div>
+            <div class="buttons">
+                <button onclick="fecharFeedback(event)" id="cancelarButton" class="btn-cancelar">Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+    
+    <script src="../Listagem/JSListagem.js"></script>
+</body>
+</html>

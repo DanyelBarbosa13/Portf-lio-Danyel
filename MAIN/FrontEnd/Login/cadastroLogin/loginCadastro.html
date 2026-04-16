@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="../Login/loginCadastro.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Seção do Formulário de Cadastro -->
+        <div class="form-container">
+            <form id="form-cadastro" class="form">
+                <img src="../Assets/logo_azul.png" alt="LOGO" class="logo">
+                <h2 class="title">Crie sua conta</h2>
+                
+                <div class="inp">
+                    <input type="text" id="nome" class="input" placeholder="Digite seu usuário: *">
+                    <span class="error-message" id="nome-error"></span>
+                </div>
+                
+                <div class="inp">
+                    <input type="text" id="email" class="input" placeholder="Digite seu e-mail: *">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                
+                <div class="inp">
+                    <input type="password" id="senha" class="input" placeholder="Digite sua senha: *">
+                    <span class="error-message" id="senha-error"></span>
+                </div>
+                
+                <div class="inp">
+                    <input type="password" id="confirmar-senha" class="input" placeholder="Confirme sua senha: *">
+                    <span class="error-message" id="confirmar-senha-error"></span>
+                </div>
+
+                <button type="submit" class="submit">Cadastrar</button>
+                <p class="footer"> Já tem uma conta? <a href="../Login/Login.html" class="login-link">Entre agora</a></p>
+            </form>
+        </div>
+               <!-- Seção do Banner -->
+               <div class="banner">
+                <img src="../Assets/HelpSystem.WithePNG.png" class="background-logo">
+                <h1 class="wel_text">HELP SYSTEM</h1>
+                <p class="para">Bem-vindo ao Help System</p>
+            </div>
+    </div>
+
+<!-- Notificações -->
+<div id="success-notification">
+    <img src="../Assets/IconeNotifi.png" alt="Ícone de Sucesso" class="notification-icon">
+    <span>Login realizado com sucesso!</span>
+</div>
+<div id="error-notification">
+    <img src="../Assets/IconError.png" alt="Ícone de Erro" class="notification-icon">
+    <span>Erro ao realizar login. Verifique suas credenciais.</span>
+</div>
+
+    <script src="../Login/loginCadastro.js"></script>
+</body>
+</html>

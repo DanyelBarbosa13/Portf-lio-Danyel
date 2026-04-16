@@ -1,0 +1,192 @@
+#=========================# ALTERAÇÃO DO USUÁRIO ROOT #=========================#
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+
+#=========================# CRIAÇÃO DO BANCO DE DADOS #=========================#
+
+CREATE DATABASE helpSystem
+DEFAULT CHARSET utf8
+COLLATE utf8_general_ci;
+
+USE helpSystem;
+
+#=========================# TABELAS PARA VALORES PRÉ-CADASTRADOS #=========================#
+
+CREATE TABLE IF NOT EXISTS Maquina (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL
+) DEFAULT CHARSET = utf8;
+
+CREATE TABLE IF NOT EXISTS Locall (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL
+) DEFAULT CHARSET = utf8;
+
+#=========================# TABELA PARA CADASTRO DE SERVIÇOS #=========================#
+
+CREATE TABLE IF NOT EXISTS Servicos (
+    id_servico INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_servico ENUM('Substituição', 'Reparo', 'Limpeza') NOT NULL,
+    urgencia ENUM('Pouco Urgente', 'Urgente', 'Muito Urgente', 'Emergência') NOT NULL,
+    responsavel VARCHAR(50) NOT NULL,
+    data_servico DATE NOT NULL,
+    fk_maquina_id INT NOT NULL,  -- Usando INT para referência ao ID da máquina
+    fk_locall_id INT NOT NULL,    -- Usando INT para referência ao ID do local
+    descricao VARCHAR(300) NOT NULL,
+    concluido BOOLEAN DEFAULT FALSE,
+    resolucao_registrada BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (fk_maquina_id) REFERENCES Maquina(id),  -- Referência ao ID
+    FOREIGN KEY (fk_locall_id) REFERENCES Locall(id)     -- Referência ao ID
+) DEFAULT CHARSET = utf8;
+
+#=========================# TABELA PARA RESOLUÇÃO DOS PROBLEMAS #=========================#
+
+CREATE TABLE IF NOT EXISTS Resolucao (
+    id_resolucao INT AUTO_INCREMENT PRIMARY KEY,
+    id_servico INT NOT NULL,
+    resolucao VARCHAR(25) DEFAULT 'Em Andamento',
+    FOREIGN KEY (id_servico) REFERENCES Servicos(id_servico)
+) DEFAULT CHARSET = utf8;
+#=========================# TABELA PARA LOGIN #======================================#
+
+CREATE TABLE IF NOT EXISTS Usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,  -- Usaremos um campo longo para senhas hash
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) DEFAULT CHARSET = utf8;
+
+INSERT INTO Usuarios (nome, email, senha)
+VALUES 
+('Danyelbarbosa13', 'danyel@example.com', 'Cabrito2$'),
+('Thiêniorenna10', 'th@example.com', 'Ratogato2$');
+
+#=========================# VIEW PARA LISTAGEM DE SERVIÇOS #=========================#
+
+CREATE VIEW ListagemServico AS 
+SELECT 
+    s.id_servico, 
+    m.descricao AS maquina, 
+    s.tipo_servico, 
+    s.urgencia, 
+    s.responsavel, 
+    s.data_servico, 
+    l.descricao AS locall, 
+    s.descricao, 
+    r.resolucao, 
+    s.concluido AS status_conclusao 
+FROM Servicos s 
+JOIN Maquina m ON s.fk_maquina_id = m.id  -- Ajustado para ID
+JOIN Locall l ON s.fk_locall_id = l.id    -- Ajustado para ID
+LEFT JOIN Resolucao r ON s.id_servico = r.id_servico 
+ORDER BY s.data_servico DESC;
+
+#=========================# INSERÇÃO DE VALORES PRÉ-CADASTRADOS #=========================#
+
+INSERT INTO Maquina (descricao) VALUES 
+('LABEFF-01'), 
+('LABEFF-02'), 
+('LABEFF-03');
+
+INSERT INTO Locall (descricao) VALUES 
+('Laboratório-01'), 
+('Laboratório-02'), 
+('Laboratório-03');
+
+#=========================# TRIGGER PARA INSERÇÃO AUTOMÁTICA DE RESOLUÇÃO #=========================#
+
+DELIMITER ;;
+CREATE TRIGGER after_servico_insert 
+AFTER INSERT ON Servicos 
+FOR EACH ROW 
+BEGIN 
+    INSERT INTO Resolucao (id_servico, resolucao) 
+    VALUES (NEW.id_servico, 'Em Andamento'); 
+END;;
+DELIMITER ;
+
+-- Primeiro, remova a chave estrangeira existente, se houver
+ALTER TABLE Resolucao
+DROP FOREIGN KEY resolucao_ibfk_1;
+
+-- Agora, adicione a nova chave estrangeira com a opção ON DELETE CASCADE
+ALTER TABLE Resolucao
+ADD CONSTRAINT resolucao_ibfk_1
+FOREIGN KEY (id_servico) REFERENCES Servicos(id_servico)
+ON DELETE CASCADE;
+
+
+#=========================# INSERÇÃO DE REGISTROS INICIAIS DE SERVIÇOS #=========================#
+
+INSERT INTO Servicos (tipo_servico, urgencia, responsavel, data_servico, fk_maquina_id, fk_locall_id, descricao, concluido) 
+VALUES 
+('Substituição','Urgente', 'Danyel Barbosa', '2024-06-16', 2, 1, 'Substituição urgente de componente', TRUE), 
+('Limpeza','Pouco Urgente', 'Thiênio Rennan', '2024-06-24', 1, 2, 'Limpeza preventiva na máquina', FALSE),
+('Reparo','Muito Urgente', 'Luiz Ótavio', '2024-06-18', 3, 3, 'Reparo de componente da máquina', FALSE),
+('Reparo','Urgênte', 'Danyel Barbosa', '2024-09-25', 1, 2, 'Reparo Simples', TRUE),
+('Reparo','Muito Urgente', 'Luiz Ótavio', '2024-11-30', 2, 1, 'Limpeza prventiva', FALSE),
+('Reparo','Emergência', 'Thiênio Rennan', '2024-12-24', 3, 3, 'Substituição de componente', TRUE);
+
+#=========================# CONSULTA LOGIN #==============================#
+SELECT nome FROM Usuarios WHERE email = 'danyel@example.com';
+SELECT id_usuario FROM Usuarios WHERE email;
+SELECT senha FROM Usuarios WHERE email;
+SELECT id_usuario, nome, senha FROM Usuarios WHERE email;
+SELECT * FROM Usuarios;
+SELECT * FROM Usuarios WHERE email;
+SELECT * FROM Usuarios WHERE email = 'danyel@example.com';
+
+#=========================# CONSULTAS E FILTROS #=========================#
+SELECT * FROM Servicos WHERE id_servico;
+SELECT * FROM ListagemServico ORDER BY id_servico ASC;
+
+SELECT tipo_servico FROM Servicos GROUP BY tipo_servico ORDER BY tipo_servico;
+SELECT urgencia FROM Servicos GROUP BY urgencia ORDER BY urgencia;
+SELECT responsavel FROM Servicos GROUP BY responsavel ORDER BY responsavel;
+SELECT DATE(data_servico) AS data_servico FROM Servicos GROUP BY data_servico ORDER BY data_servico;
+SELECT descricao FROM Locall ORDER BY descricao;
+SELECT 'Concluído' AS status_conclusao UNION SELECT 'Não Concluído' AS status_conclusao;
+
+#=========================# CONSULTA PARA OBTER VALORES DOS SUBFILTROS #=========================#
+
+SELECT * FROM Servicos WHERE urgencia = 'Pouco Urgente' ORDER BY id_servico ASC;
+SELECT * FROM Servicos WHERE urgencia = 'Urgente' ORDER BY id_servico ASC;
+SELECT * FROM Servicos WHERE urgencia = 'Muito Urgente' ORDER BY id_servico ASC;
+SELECT * FROM Servicos WHERE urgencia = 'Emergência' ORDER BY id_servico ASC;
+
+SELECT * FROM Servicos WHERE concluido = TRUE; -- Serviços concluídos
+SELECT * FROM Resolucao WHERE resolucao = 'Em Andamento'; -- Serviços em andamento
+
+SELECT * FROM Servicos WHERE responsavel = 'Luiz Ótavio' AND id_servico IN (SELECT id_servico FROM Resolucao WHERE resolucao = 'Em Andamento') ORDER BY id_servico ASC; -- Serviços em andamento para um técnico específico
+SELECT * FROM Servicos WHERE responsavel = 'Danyel Barbosa' AND id_servico IN (SELECT id_servico FROM Resolucao WHERE resolucao = 'Concluído') ORDER BY id_servico ASC; -- Serviços concluídos para um técnico específico
+
+#=========================# ATUALIZAÇÃO DE REGISTROS #=========================#
+
+UPDATE Resolucao SET resolucao = 'Concluído' WHERE id_servico = 2;
+UPDATE Resolucao SET resolucao = 'Concluído' WHERE id_servico = 1;
+
+#=========================# EXCLUSÃO DE REGISTROS #=========================#
+
+DELETE FROM Servicos WHERE data_servico < '2024-01-01';
+SELECT * FROM Usuarios;
+SELECT id FROM Maquina WHERE descricao = 'LABEFF-02';
+
+SELECT 
+    s.id_servico,
+    s.tipo_servico,
+    s.urgencia,
+    s.responsavel,
+    s.data_servico,
+    s.fk_maquina_id,
+    m.descricao AS maquina,
+    s.fk_locall_id,
+    l.descricao AS locall,
+    s.descricao,
+    s.concluido
+FROM Servicos s
+JOIN Maquina m ON s.fk_maquina_id = m.id
+JOIN Locall l ON s.fk_locall_id = l.id;
+
+
+DROP DATABASE helpSystem;

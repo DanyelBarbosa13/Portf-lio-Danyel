@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/icon" href="../Assets/logo_branca-removebg-preview">
+    <link rel="stylesheet" href="../Cadastro/Cadastro.css">
+    <title>Cadastro de Serviço</title>
+</head>
+<body>
+    <div class="menu">
+        <a href="../Home/Home.html">PÁGINA INICIAL</a>
+        <a href="../Sobre/sobre.html">SOBRE</a>
+        <a href="../Cadastro/Cadastro.html">CADASTRAR</a>
+        <a href="../Listagem/Listagem.html">LISTAR</a>
+        <img src="../Assets/logo_branca-removebg-preview.png" alt="Logo">
+        <b>HELP SYSTEM</b>
+            <!-- Área de usuário -->
+            <div class="user-area">
+                <img id="user-icon" src="../Assets/IconUser.png" alt="Ícone do usuário" width="40" height="40">
+                <span id="user-name">Nome do Usuário</span>
+                <ul class="user-options">
+                    <li><a href="#">Trocar Usuário</a></li>
+                    <li><a href="../Login/Login.html" id="logout-btn">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+    <div class="header-section">
+        <h3>Organize e Gerencie</h3>
+        <h1>Cadastro de Serviço</h1>
+        <h4>Registro de Serviços: Detalhes Cruciais em um Piscar de Olhos</h4>
+    </div>
+
+    <div class="cadastro-container">
+        <form class="form-servico">
+            <div class="form-group">
+                <label for="tipo-servico">Tipo de Serviço <span class="required">*</span></label>
+                <select id="tipo-servico">
+                    <option value="">Tipo de Serviço</option>
+                    <option value="Substituição">Substituição</option>
+                    <option value="Limpeza">Limpeza</option>
+                    <option value="Reparo">Reparo</option>
+                </select>
+                <span id="error-tipo-servico" class="error-message">Este campo é obrigatório.</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="urgencia-servico">Urgência <span class="required">*</span></label>
+                <select id="urgencia-servico">
+                    <option value="">Urgência</option>
+                    <option value="Pouco Urgente">Pouco Urgente</option>
+                    <option value="Urgente">Urgente</option>
+                    <option value="Muito Urgente">Muito Urgente</option>
+                    <option value="Emergência">Emergência</option>
+                </select>
+                <span id="error-urgencia-servico" class="error-message">Este campo é obrigatório.</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="responsavel-servico">Responsável <span class="required">*</span></label>
+                <select id="responsavel-servico">
+                    <option value="">Escolha uma Responsável</option>
+                    <option value="THIÊNIO RENAN">THIÊNIO RENAN</option>
+                    <option value="DANYEL BARBOSA">DANYEL BARBOSA</option>
+                    <option value="LUIZ OTÁVIO">LUIZ OTÁVIO</option>
+                </select>
+                <span id="error-responsavel-servico" class="error-message">Este campo é obrigatório.</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="data-servico">Data <span class="required">*</span></label>
+                <input type="date" id="data-servico">
+                <span id="error-data-servico" class="error-message">Este campo é obrigatório.</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="maquina-servico">Máquina <span class="required">*</span></label>
+                <select id="maquina-servico">
+                    <option value="">Escolha uma máquina</option>
+                    <option value="LABEFF-01">LABEFF-01</option>
+                    <option value="LABEFF-02">LABEFF-02</option>
+                    <option value="LABEFF-03">LABEFF-03</option>
+                </select>
+                <span id="error-maquina-servico" class="error-message">Este campo é obrigatório.</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="local-servico">Local <span class="required">*</span></label>
+                <select id="local-servico">
+                    <option value="">Escolha um Local</option>
+                    <option value="Laboratório-01">Laboratório-01</option>
+                    <option value="Laboratório-02">Laboratório-02</option>
+                    <option value="Laboratório-03">Laboratório-03</option>
+                </select>
+                <span id="error-local-servico" class="error-message">Este campo é obrigatório.</span>
+            </div>            
+            <div class="form-group descricao">
+                <label for="descricao">Descrição *</label>
+                <textarea id="descricao" name="descricao" placeholder="Insira uma descrição do problema..."></textarea>
+            </div>            
+            <span id="error-descricao" class="error-message">Por favor, insira uma descrição.</span>
+
+<!-- Notificação de Sucesso -->
+<div class="notification" id="success-notification">
+    <img src="../Assets/IconeNotifi.png" alt="Ícone de Sucesso">
+    <span id="success-message">Mensagem de sucesso!</span>
+    <button class="close-btn" onclick="hideSuccessNotification()">×</button>
+</div>
+
+<!-- Notificação de Erro -->
+<div class="notification" id="error-notification">
+    <img src="../Assets/IconError.png" alt="Ícone de Erro">
+    <span id="error-message">Mensagem de erro!</span>
+    <button class="close-btn" onclick="hideErrorNotification()">×</button>
+</div>
+
+            <div class="form-buttons">
+                <button type="button" onclick="voltar()">Cancelar</button>
+                <button type="button" onclick="salvarCadastro()">Salvar</button>
+            </div>
+        </form>
+    </div>
+    <div class="footer">
+        <div class="footer-section">
+            <h4>Sobre</h4>
+            <p>Um projeto dos Alunos do Colégio Nossa Senhora de Lourdes - Recife.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Mapa do Site</h4>
+            <ul>
+                <li><a href="../Home/Home.html">PÁGINA INICIAL</a></li>
+                <li><a href="../Sobre/sobre.html">SOBRE</a></li>
+                <li><a href="../Cadastro/Cadastro.html">CADASTRAR</a></li>
+                <li><a href="../Listagem/Listagem.html">LISTAR</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Informações de Contato</h4>
+            <p>R. Nossa Sra. de Lourdes, 139 - Casa Forte, Recife - PE, 52061-030<br>(81) 3182-3600</p>
+        </div>
+    <script src="../Cadastro/JSCadastrarButton.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,255 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EAEAEA;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    background-color: #0054A6;
+    overflow: auto;
+    padding: 10px 90px;
+    text-align: relative;
+}
+
+.menu a {
+    display: inline-block;
+    color: #FFF;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    background-color: #04003d;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.menu img {
+    position: absolute;   
+    left: 2%;   
+    top: 10px;
+    width: 50px;
+}
+
+.menu b {
+    position: absolute;
+    left: 0.5%;
+    top: 70px;
+    color: #0054A6;
+    font-size: 14px;
+}
+
+.main-content {
+    text-align: center;
+    padding: 50px 20px;
+}
+.main-content h1 {
+    margin-bottom: 10px;
+}
+.main-content .nossos-principais {
+    display: block;
+    color: #1B8EFF;
+    font-size: 24px;
+}
+.main-content .diferenciais {
+    display: block;
+    color: #000;
+    font-size: 36px;
+    font-weight: bold;
+}
+.main-content p {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.button-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.button-grid button {
+    background-color: #FFF;
+    border: 2px solid #CCC;
+    padding: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Botões maiores */
+    height: 200px; /* Botões maiores */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 5px; /* Reduzido para aproximar os elementos */
+    transition: transform 0.2s ease-in-out; /* Efeito de transição para o hover */
+}
+
+.button-grid button img {
+    width: 100px; /* Tamanho do ícone */
+    height: 100px;
+    margin: -10px;
+}
+
+.button-grid button h3 {
+    font-size: 18px; /* Título maior */
+    font-weight: bold;
+    margin: -25px 0 0 0; /* Reduzido para aproximar do ícone */
+}
+
+.button-grid button span {
+    font-size: 14px; /* Subtítulo menor */
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
+
+.button-grid button:hover {
+    transform: scale(0.95); /* Botão diminui levemente ao passar o mouse */
+    background-color: #f9f9f9; /* Fundo levemente mais claro no hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais intensa no hover */
+}
+
+.informativos {
+    padding: 30px 20px;
+    background-color: #FFF;
+    text-align: center;
+}
+
+.informativos h2 {
+    color: #0054A6;
+    margin-bottom: 20px;
+}
+
+.informativo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 80%;
+    background: #F5F5F5;
+    border-radius: 10px;
+}
+
+.informativo img {
+    width: 150px;
+    margin-right: 20px;
+}
+
+.informativo-content {
+    max-width: 60%;
+    text-align: left;
+}
+
+.informativo-content h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.informativo-content p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.informativo-content a {
+    color: #0054A6;
+    text-decoration: none;
+}
+
+.footer {
+    background-color: #0054A6;
+    color: #FFF;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section {
+    max-width: 200px;
+    margin: 10px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.user-area {
+    position: absolute;
+    right: 250px;
+    top: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Garante alinhamento lateral */
+    gap: -10px; /* Espaçamento entre o ícone e o nome */
+    font-size: 0.85em;
+}
+
+.user-area img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-options {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    background-color: white;
+    color: black;
+    top: 35px; /* Posiciona abaixo do nome e ícone */
+    right: 0;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 10;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-options li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+.user-options li a {
+    color: black;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.user-options li a:hover {
+    text-decoration: underline;
+}
+
+/* Exibir opções ao clicar */
+.user-area.active .user-options {
+    display: block; /* Exibe o menu */
+}

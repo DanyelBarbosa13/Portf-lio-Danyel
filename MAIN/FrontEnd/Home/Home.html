@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/icon"href="../Assets/logo_branca-removebg-preview">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Home/home.css">
+    <title>Prototype</title>
+</head>
+<body>
+   <div class="menu">
+                <a href="../Home/Home.html">PÁGINA INICIAL</a>
+                <a href="../Sobre/sobre.html">SOBRE</a>
+                <a href="../Cadastro/Cadastro.html">CADASTRAR</a>
+                <a href="../Listagem/Listagem.html">LISTAR</a>
+                <img src="../Assets/logo_branca-removebg-preview.png" alt="Logo">
+               <b>HELP SYSTEM</b>
+        </div>
+              <!-- Área de usuário -->
+      <div class="user-area">
+        <img id="user-icon" src="../Assets/IconUser.png" alt="Ícone do usuário" width="40" height="40">
+        <span id="user-name">👤 Nome do Usuário</span>
+        <ul class="user-options">
+            <li><a href="#">Trocar Usuário</a></li>
+            <li><a href="../Login/Login.html" id="logout-btn">Logout</a></li>
+        </ul>
+    </div>
+</div>
+    </div>
+    <div class="main-content">
+        <h1>
+            <span class="nossos-principais">Nossos Principais</span>
+            <span class="diferenciais">Diferenciais</span>
+        </h1>
+        <p>O Colégio Nossa Senhora de Lourdes é referência em ensino, são diversas modalidades oferecidas com um sistema inovador.</p>
+        <div class="button-grid">
+            <button id="btnCadastrar" class="btn-cadastrar">
+                <img src="../Assets/IconCadastro.png" alt="Icone Cadastrar">
+                <h3>Cadastrar</h3>
+                <span>Cadastrar Serviços, Manutenção, Limpeza ou Reparo de Equipamentos</span>
+            </button>
+            <button id="btnListar" class="btn-listar">
+                <img src="../Assets/IconListagem,.png" alt="Icone Listar">
+                <h3>Listar</h3>
+                <span>Listar Serviços Cadastrados no Sistema</span>
+            </button>
+        </div>        
+    </div>
+    <div class="informativos">
+        <h2>Fique Ligado Nos Informativos</h2>
+        <div class="informativo">
+            <img src="../Assets/logo_branca-removebg-preview.png" alt="Robot">
+            <div class="informativo-content">
+                <h3>Trazendo Inovação em Tecnologia</h3>
+                <p>Com grande satisfação, apresentamos nosso mais novo sistema de automação. Com tecnologia de ponta...</p>
+                <a href="#vermais">VER MAIS</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-section">
+            <h4>Sobre</h4>
+            <p>Um projeto dos Alunos do Colégio Nossa Senhora de Lourdes - Recife.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Mapa do Site</h4>
+               <ul>
+            <li><a href="../Home/Home.html">PÁGINA INICIAL</a></li>
+            <li><a href="../Sobre/sobre.html">SOBRE</a></li>
+            <li><a href="../Cadastro/Cadastro.html">CADASTRAR</a></li>
+            <li><a href="../Listagem/Listagem.html">LISTAR</a></li>
+        </ul>
+    </div>
+        <div class="footer-section">
+            <h4>Informações de Contato</h4>
+            <p>R. Nossa Sra. de Lourdes, 139 - Casa Forte, Recife - PE, 52061-030<br>(81) 3182-3600</p>
+        </div>
+        
+    </div>
+    <script>
+        document.getElementById('btnCadastrar').onclick = function() {
+            window.location.href = '../Cadastro/Cadastro.html';
+        };
+        
+        document.getElementById('btnListar').onclick = function() {
+            window.location.href = '../Listagem/Listagem.html';
+        };
+    </script>
+    <script src="../Home/Home.js"></script>
+</body>
+</html>

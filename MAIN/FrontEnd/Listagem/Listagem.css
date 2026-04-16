@@ -1,0 +1,804 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu {
+    background-color: #0054A6;
+    overflow: auto;
+    padding: 10px 90px;
+    text-align: relative;
+}
+
+.menu a {
+    display: inline-block;
+    color: #FFF;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    background-color: #04003d;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.menu img {
+    position: absolute;
+    left: 2%;
+    top: 10px;
+    width: 50px;
+}
+
+.menu b {
+    position: absolute;
+    left: 0.5%;
+    top: 70px;
+    color: #0054A6;
+    font-size: 14px;
+}
+
+.listagem-servicos, .resolucao-problema {
+    border: 1px solid #0054A6;
+    background-color:#0054A6;
+    margin: 50px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 15px;
+    padding: 40px 70px;
+    max-width: 70%;
+ 
+
+}
+.listagem-servicos {
+    border: 1px solid #0054A6;
+    background-color: #0054A6;
+    margin: 50px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 40px 70px;
+    max-width: 70%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: auto; /* Ajuste automático da altura */
+}
+.listagem-servicos h4, .listagem-servicos h1, .listagem-servicos h3,
+.resolucao-problema h4, .resolucao-problema h1, .resolucao-problema h3 {
+    text-align: center;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.filtro-item {
+    width: 100%;
+    max-width: 450px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.table-container {
+    height: auto; /* Permite que o contêiner se expanda conforme o conteúdo */
+    max-height: none; /* Remove qualquer limitação de altura */
+    overflow: visible; /* Evita barra de rolagem interna */
+}
+
+/* Estilo para tabelas com bordas arredondadas */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    border: 1px solid #7c7c7c;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #3499FC;
+    color: #fff;
+}
+
+table td {
+    background-color: #fff;
+}
+/* Barra de rolagem na tabela de serviços */
+.table-container {
+    max-height: 400px; /* Define uma altura máxima */
+    overflow-y: hidden; 
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+/* Estiliza o cabeçalho da tabela */
+table thead tr td {
+    background-color: #ccc; /* Cor de fundo igual à coluna "Ações" */
+    color: rgb(0, 0, 0); /* Fonte branca */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.colored-image {
+    filter: sepia(100%) hue-rotate(180deg) saturate(200%);
+}
+
+filter-box
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #0066cc;
+    color: white;
+}
+
+button:nth-child(1) {
+    background-color: #ddd;
+    color: black;
+}
+
+button:nth-child(1):hover {
+    background-color: #ccc;
+}
+
+
+h1{
+    margin: -30px;
+    
+}
+h3{
+    margin-top: 80px;
+    color: #1B8EFF;
+    margin-bottom:  30px;
+}
+h4{
+    font-weight:normal;
+    margin-top: 35px;
+}
+.cabecalho-listagem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 120px;
+}
+.textos-cabecalho-listagem{
+    
+    flex: 1;
+    text-align: center;
+    margin: -40px;
+
+}
+
+.footer {
+    background-color: #0054A6;
+    color: #FFF;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section {
+    max-width: 200px;
+    margin: 10px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+/*SUBLISTAGEM*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.resolucao-problema {
+    background-color: #0054A6; /* Cor azul para o fundo do modal */
+    border-radius: 15px;
+    padding: 30px 40px;
+    max-width: 600px;
+    width: 90%; /* Para ficar menor e centralizado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    color: white; /* Texto branco */
+    text-align: center; /* Centralizar o conteúdo */
+}
+
+.resolucao-problema h1, .resolucao-problema h3, .resolucao-problema h4 {
+    margin: 0 0 20px;
+    color: #fff;
+}
+
+textarea {
+    background-color: #e6e6e6; /* Área de texto em cinza claro */
+    border: none;
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 8px;
+    resize: none;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #003c77;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: auto; /* Ajusta o botão ao conteúdo */
+    margin-top: 20px; /* Pode ser removido se você quiser uniformidade entre os botões */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    font-size: 14px; /* Altera o tamanho da fonte */
+    font-family: Arial, sans-serif; /* Define a fonte desejada */
+    font-weight: normal; /* Ajusta o peso da fonte */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+    padding: 8px 16px; /* Define o preenchimento dos botões */
+}
+
+button:hover {
+    background-color: #0066cc;
+    color: white;
+}
+
+button:nth-child(1) {
+    background-color: #ddd; /* Se necessário, mantenha esta cor para o primeiro botão */
+}
+
+/* Contêiner para alinhar o campo de filtro e o botão */
+.filter-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Alinha o botão ao lado direito */
+    gap: 10px;
+    width: 100%;
+    margin-top: 0px;
+}
+
+/* Espaçamento entre os filtros e o topo do container */
+.listagem-servicos {
+    padding-top: 5px; /* Ajuste o valor conforme necessário */
+    height: auto; /* Ajusta a altura automaticamente */
+    max-height: none; /* Remove a limitação de altura */
+    overflow: visible; /* Permite que a lista cresça conforme o conteúdo */
+}
+
+/* Ajuste de espaçamento para a tabela */
+.table-container {
+    margin-top: 10px; /* Adiciona um espaço entre o botão de filtro e a tabela */
+}
+
+button#filtrar-btn {
+    background-color: #003c77;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: background-color 0.3s ease;
+}
+
+button#filtrar-btn:hover {
+    background-color: #0066cc;
+}
+
+/* Mantém os botões "Aplicar Filtros" e "Limpar Filtros" com tamanho fixo */
+button#filtrar-btn,
+button#limpar-filtros-btn {
+    flex-shrink: 0; /* Garante que os botões não encolham */
+    min-width: 120px; /* Define uma largura mínima para os botões */
+    height: 40px; /* Define uma altura fixa */
+    text-align: center;
+    box-sizing: border-box;
+    white-space: nowrap; /* Evita quebras de linha no texto do botão */
+}
+
+/* Adicione uma classe específica para o botão "Limpar Filtros" */
+button#limpar-filtros-btn {
+    background-color: #ddd;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 0px; /* Espaço entre os botões */
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button#limpar-filtros-btn:hover {
+    background-color: #ccc;
+}
+
+/* Filtrar: vvvvvvvvvvvvvvvvvvvvvvv */
+
+#filtrar, #tipo-servico, #urgencia, #periodo, #responsavel, #concluido {
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: none;
+    width: 457px;
+    justify-items: left;
+    align-items: center;
+    margin-bottom: -10px;
+    gap: 5%;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    background-color: #ddd; /* Cor de fundo cinza claro */
+}
+
+
+/* Ajusta os filtros para ocupar o espaço desejado */
+.filter-box {
+    display: flex;
+    flex-wrap: nowrap; /* Evita que os elementos do filtro quebrem linha */
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 10px; /* Reduz o espaçamento entre os filtros */
+    margin-bottom: 10px; /* Ajusta o espaço inferior do contêiner */
+}
+
+/* Remove o contorno preto ao selecionar os filtros */
+.filter-box select:focus,
+button:focus {
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: none; /* Remove sombras de foco */
+}
+
+/* Reduz o espaçamento entre os filtros */
+.filter-box select {
+    padding: 6px; /* Reduz o preenchimento interno */
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Remover linhas adicionais */
+.filter-box {
+    justify-content: flex-start; /* Alinha os filtros e botões à esquerda */
+}
+
+select {
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 14px;
+    width: 100%; /* Deixa o select responsivo para ocupar o espaço de acordo com o container */
+    flex-grow: 0; /* Faz o select crescer conforme o espaço disponível */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ajuste visual */
+}
+
+#filtrar {
+    
+    height: 40px; 
+    padding: 8px 16px;
+    font-size: 14px; 
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block; /* Garante que o botão seja visível ao lado dos selects */
+    margin-left: -5px; /* Margem para separá-lo do último select */
+    border: none;
+    background-color: #ddd;
+    color: #000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Ajuste visual */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Filtrar ^^^^^^^^^^^^^^^^^^^ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-detalhes {
+    background-color: #0054A6; /* Cor azul para o fundo do modal */
+    border-radius: 15px;
+    padding: 30px 40px;
+    max-width: 600px;
+    width: 90%; /* Para ficar menor e centralizado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    color: white; /* Texto branco */
+    text-align: center; /* Centralizar o conteúdo */
+    position: fixed; /* Fixar posição na tela */
+    top: 50%; /* Centralizar verticalmente */
+    left: 50%; /* Centralizar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste para o centro exato */
+    z-index: 1000; /* Garantir que fique acima de outros elementos */
+}
+
+.feedback-detalhes h1, .feedback-detalhes h3, .feedback-detalhes h4 {
+    margin: 0 0 20px;
+    color: #fff;
+}
+
+.detalhes-servico p {
+    color: white;
+    text-align: left;
+    margin: 10px 0;
+}
+
+
+/* Estilo para o modal de confirmação */
+#modal-confirmacao {
+    display: none; /* Inicialmente escondido */
+    position: fixed; /* Fica fixo na tela */
+    top: 50%; /* Posiciona 50% a partir do topo da tela */
+    left: 50%; /* Posiciona 50% a partir da esquerda da tela */
+    transform: translate(-50%, -50%); /* Centraliza o modal usando a transformação */
+    background-color: white; /* Fundo branco */
+    border: 1px solid #ccc; /* Borda cinza */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    padding: 20px; /* Espaçamento interno */
+    z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+}
+
+/* Estilo para o conteúdo dentro do modal */
+#modal-confirmacao div {
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo para os botões */
+#botao-sim {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0066cc; /* Verde */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#botao-sim:hover {
+    background-color: #696969; /* Verde escuro ao passar o mouse */
+}
+
+/* Estilo para o botão NÃO (vermelho) */
+#botao-nao {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3f3f3f; /* Vermelho */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#botao-nao:hover {
+    background-color: #0066cc; /* Vermelho escuro ao passar o mouse */
+}
+
+/* Adicionando animação de slide nos filtros */
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.filtro-dinamico {
+    animation: slide-in 0.5s ease-in-out forwards;
+}
+
+/* Notificações */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #0054A6; /* Cor principal */
+    color: #FFFFFF; /* Cor do texto */
+    border: 1px solid #CCC; /* Borda */
+    padding: 10px 15px; /* Reduzido */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold; /* Texto em negrito */
+    opacity: 0; /* Invisível inicialmente */
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    transform: translateY(-20px); /* Animação de entrada */
+    z-index: 1000;
+    max-width: 300px; /* Define uma largura máxima */
+    word-wrap: break-word; /* Garante quebra de linha para textos longos */
+}
+
+.notification img {
+    width: 40px; /* Define o tamanho fixo para todas as imagens */
+    height: 40px;
+    object-fit: contain; /* Garante proporção correta */
+}
+
+.notification:hover {
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); /* Profundidade no hover */
+    transform: scale(1.02); /* Leve aumento de tamanho */
+}
+
+.notification .close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Notificação de Sucesso */
+#success-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #0054A6; /* Azul para sucesso */
+    color: #FFFFFF;
+    border: 1px solid #0054A6;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold; /* Texto em negrito */
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-20px);
+    z-index: 1000;
+}
+
+#success-notification.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Notificação de Erro */
+#error-notification {
+    position: fixed;
+    top: 80px; /* Posição diferente para não sobrepor sucesso */
+    right: 20px;
+    background-color: #CCC; /* Cinza claro para erro */
+    color: #000;
+    border: 1px solid #999;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold; /* Texto em negrito */
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-20px);
+    z-index: 1000;
+}
+
+#error-notification.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#modal-editar {
+    max-height: 80%; /* Modal responsivo */
+    max-width: 50%;
+    background-color: #0054A6;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.form-servico {
+    display: grid;
+    grid-template-columns: 3fr 3fr; /* Duas colunas iguais */
+    gap: 20px; /* Espaçamento entre campos */
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    max-width: 90%; /* Define uma largura máxima para a label */
+    white-space: nowrap; /* Impede que o texto quebre para outra linha */
+}
+
+
+.form-group select,
+.form-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -50px;
+}
+
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.form-buttons button:first-child {
+    background-color: #ccc;
+    color: black;
+}
+
+
+.form-buttons button:last-child {
+    background-color: #003c77;
+    color: white;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.user-area {
+    position: absolute;
+    right: 250px;
+    top: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Garante alinhamento lateral */
+    gap: -10px; /* Espaçamento entre o ícone e o nome */
+    font-size: 0.85em;
+}
+
+.user-area img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-options {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    background-color: white;
+    color: black;
+    top: 35px; /* Posiciona abaixo do nome e ícone */
+    right: 0;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 10;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-options li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+.user-options li a {
+    color: black;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.user-options li a:hover {
+    text-decoration: underline;
+}
+
+/* Exibir opções ao clicar */
+.user-area.active .user-options {
+    display: block; /* Exibe o menu */
+}
